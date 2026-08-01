@@ -49,21 +49,18 @@ window.onload = typeWriter;
 const song = document.getElementById("song");
 const playBtn = document.getElementById("playBtn");
 
-playBtn.addEventListener("click",()=>{
+playBtn.addEventListener("click", function () {
 
-if(song.paused){
-
-song.play();
-
-playBtn.innerHTML="⏸ Pause Song";
-
-}else{
-
-song.pause();
-
-playBtn.innerHTML="▶ Play Song";
-
-}
+    if(song.paused){
+        song.play().then(()=>{
+            playBtn.innerHTML="⏸ Pause Song";
+        }).catch(err=>{
+            console.log(err);
+        });
+    }else{
+        song.pause();
+        playBtn.innerHTML="▶ Play Song";
+    }
 
 });
 
